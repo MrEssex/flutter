@@ -3,9 +3,9 @@
 
 Example using all options:
 
-rollup.config.js
+rollup.config.mjs
 ```js
-import Flutter from 'flutter';
+import Flutter from '@mressex/flutter';
 import postcssComments from 'postcss-discard-comments';
 import autoprefixer from 'autoprefixer';
 
@@ -34,9 +34,9 @@ export default Flutter.getRollupConfig();
 
 
 Svelte example
-rollup.config.js
+rollup.config.mjs
 ```js
-import Flutter from 'flutter';
+import Flutter from '@mressex/flutter';
 import postcssComments from 'postcss-discard-comments';
 import autoprefixer from 'autoprefixer';
 
