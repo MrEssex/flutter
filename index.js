@@ -16,9 +16,9 @@ module.exports = {
     return this;
   },
 
-  setOutputPath(filename, filepath, options)
+  setOutputPath(filename, filepath, options = {}, minify= false)
   {
-    rollupConfig.setOutput(filename, filepath, options);
+    rollupConfig.setOutput(filename, filepath, options, minify);
     return this;
   },
 
@@ -63,14 +63,4 @@ module.exports = {
     rollupConfig.setCopy(options);
     return this;
   },
-
-  terser(options, force = false)
-  {
-    if(force || production)
-    {
-      rollupConfig.setTerser(options);
-    }
-
-    return this;
-  }
 };

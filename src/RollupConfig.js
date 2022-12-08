@@ -13,7 +13,7 @@ class RollupConfig
   constructor()
   {
     this.inputPath = null;
-    this.output = {};
+    this.outputs = [];
     this.plugins = [];
   }
 
@@ -22,9 +22,18 @@ class RollupConfig
     this.inputPath = inputPath;
   }
 
-  setOutput(filename, filepath, options)
+  setOutput(filename, filepath, options, minify = false)
   {
-    this.output = Object.assign({file: filepath, name: filename}, options);
+    if(minify)
+    {
+      this.outputs.push(Object.assign({
+        file:    this.appendToFilename(filepath, '.min'),
+        name:    this.appendToFilename(filename, '.min'),
+        plugins: [terser()]
+      }, options));
+    }
+
+    this.outputs.push(Object.assign({file: filepath, name: filename}, options));
   }
 
   getInputPath()
@@ -34,7 +43,7 @@ class RollupConfig
 
   getOutput()
   {
-    return this.output;
+    return this.outputs;
   }
 
   getPlugins()
@@ -79,9 +88,17 @@ class RollupConfig
     this.plugins.push(copy(options));
   }
 
-  setTerser(options = {})
+  appendToFilename(filename, string)
   {
-    this.plugins.push(terser(options))
+    const dotIndex = filename.lastIndexOf('.');
+    if(dotIndex === -1)
+    {
+      return filename + string;
+    }
+    else
+    {
+      return filename.substring(0, dotIndex) + string + filename.substring(dotIndex);
+    }
   }
 }
 
