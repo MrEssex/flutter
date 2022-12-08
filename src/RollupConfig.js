@@ -61,9 +61,9 @@ class RollupConfig
     this.plugins.push(commonJs(options));
   }
 
-  setTypescript()
+  setTypescript(options = {})
   {
-    this.plugins.push(typescript());
+    this.plugins.push(typescript(options));
   }
 
   setPostCss(options = {})

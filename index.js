@@ -16,7 +16,7 @@ module.exports = {
     return this;
   },
 
-  setOutputPath(filename, filepath, options = {}, minify= false)
+  setOutputPath(filename, filepath, options = {}, minify = false)
   {
     rollupConfig.setOutput(filename, filepath, options, minify);
     return this;
@@ -34,9 +34,9 @@ module.exports = {
     return this;
   },
 
-  typescript()
+  typescript(options = {})
   {
-    rollupConfig.setTypescript();
+    rollupConfig.setTypescript(options);
     return this;
   },
 
@@ -62,5 +62,5 @@ module.exports = {
   {
     rollupConfig.setCopy(options);
     return this;
-  },
+  }
 };
