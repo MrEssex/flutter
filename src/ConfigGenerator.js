@@ -7,13 +7,11 @@ class ConfigGenerator
 
   getRollupConfig()
   {
-    const config = {
+    return {
       input:   this.rollupConfig.getInputPath(),
       output:  this.rollupConfig.getOutput(),
       plugins: this.rollupConfig.getPlugins()
     };
-
-    return config;
   }
 }
 

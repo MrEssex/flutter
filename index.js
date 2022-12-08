@@ -2,6 +2,7 @@ const RollupConfig = require('./src/RollupConfig');
 const ConfigGenerator = require('./src/ConfigGenerator');
 
 const rollupConfig = new RollupConfig();
+const production = !process.env.ROLLUP_WATCH || process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'dev';
 
 module.exports = {
   getRollupConfig()
@@ -60,6 +61,16 @@ module.exports = {
   copy(options)
   {
     rollupConfig.setCopy(options);
+    return this;
+  },
+
+  terser(options, force = false)
+  {
+    if(force || production)
+    {
+      rollupConfig.setTerser(options);
+    }
+
     return this;
   }
 };

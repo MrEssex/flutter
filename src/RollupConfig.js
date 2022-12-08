@@ -6,6 +6,7 @@ const sveltePreprocess = require('svelte-preprocess');
 const svelte = require('rollup-plugin-svelte');
 const json = require('@rollup/plugin-json');
 const copy = require('rollup-plugin-copy');
+const terser = require('@rollup/plugin-terser');
 
 class RollupConfig
 {
@@ -76,6 +77,11 @@ class RollupConfig
   setCopy(options = {})
   {
     this.plugins.push(copy(options));
+  }
+
+  setTerser(options = {})
+  {
+    this.plugins.push(terser(options))
   }
 }
 
