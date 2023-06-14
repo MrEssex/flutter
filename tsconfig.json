@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
+    "types": [
+      "mocha"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "src/**/*.spec.ts"
+  ]
+}

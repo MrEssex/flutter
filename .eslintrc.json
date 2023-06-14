@@ -1,0 +1,33 @@
+{
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "env": {
+    "es6": true,
+    "commonjs": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": "*.spec.js",
+      "excludedFiles": [
+        "./dist",
+        "./src"
+      ],
+      "plugins": [
+        "mocha"
+      ],
+      "env": {
+        "mocha": true
+      },
+      "extends": "plugin:mocha/recommended",
+      "rules": {
+        "prefer-arrow-callback": 0,
+        "mocha/prefer-arrow-callback": 2,
+        "func-names": 0,
+        "no-unused-expressions": 0
+      }
+    }
+  ]
+}
