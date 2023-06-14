@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('gulp'), require('gulp-load-plugins')) :
-    typeof define === 'function' && define.amd ? define(['exports', 'gulp', 'gulp-load-plugins'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.index = global.index || {}, global.index.cjs = global.index.cjs || {}, global.index.cjs.js = {}), global.gulp, global.gulpLoadPlugins));
-})(this, (function (exports, gulp, gulpLoadPlugins) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('gulp'), require('gulp-eslint-new')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'gulp', 'gulp-eslint-new'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.index = global.index || {}, global.index.cjs = global.index.cjs || {}, global.index.cjs.js = {}), global.gulp, global.eslint));
+})(this, (function (exports, gulp, eslint) { 'use strict';
 
     function _interopNamespaceDefault(e) {
         var n = Object.create(null);
@@ -22,17 +22,7 @@
     }
 
     var gulp__namespace = /*#__PURE__*/_interopNamespaceDefault(gulp);
-    var gulpLoadPlugins__namespace = /*#__PURE__*/_interopNamespaceDefault(gulpLoadPlugins);
 
-    var plugins = gulpLoadPlugins__namespace({
-        pattern: ['gulp-*', 'gulp.*'],
-        config: 'package.json',
-        scope: ['dependencies', 'devDependencies', 'peerDependencies'],
-        replaceString: /^gulp(-|\.)/,
-        camelize: true,
-        lazy: true,
-        rename: {}
-    });
     function lintTask(src, opts) {
         if (opts === void 0) { opts = null; }
         // Default options
@@ -58,9 +48,9 @@
         opts = Object.assign({}, defaultOpts, opts);
         // Run ESLint
         return gulp__namespace.src(src)
-            .pipe(plugins.eslint(opts.eslint))
-            .pipe(plugins.eslint.format())
-            .pipe(plugins.eslint.failAfterError());
+            .pipe(eslint(opts.eslint))
+            .pipe(eslint.format())
+            .pipe(eslint.failAfterError());
     }
 
     exports.lintTask = lintTask;

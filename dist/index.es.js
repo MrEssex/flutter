@@ -1,15 +1,6 @@
 import * as gulp from 'gulp';
-import * as gulpLoadPlugins from 'gulp-load-plugins';
+import eslint from 'gulp-eslint-new';
 
-var plugins = gulpLoadPlugins({
-    pattern: ['gulp-*', 'gulp.*'],
-    config: 'package.json',
-    scope: ['dependencies', 'devDependencies', 'peerDependencies'],
-    replaceString: /^gulp(-|\.)/,
-    camelize: true,
-    lazy: true,
-    rename: {}
-});
 function lintTask(src, opts) {
     if (opts === void 0) { opts = null; }
     // Default options
@@ -35,9 +26,9 @@ function lintTask(src, opts) {
     opts = Object.assign({}, defaultOpts, opts);
     // Run ESLint
     return gulp.src(src)
-        .pipe(plugins.eslint(opts.eslint))
-        .pipe(plugins.eslint.format())
-        .pipe(plugins.eslint.failAfterError());
+        .pipe(eslint(opts.eslint))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 }
 
 export { lintTask };

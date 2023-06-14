@@ -1,20 +1,20 @@
 import * as gulp from 'gulp';
 import eslint, {GulpESLintOptions} from "gulp-eslint-new";
-import * as gulpLoadPlugins from 'gulp-load-plugins';
+// import * as gulpLoadPlugins from 'gulp-load-plugins';
 
-interface GulpPlugins extends IGulpPlugins {
-  eslint: typeof eslint;
-}
-
-const plugins = gulpLoadPlugins<GulpPlugins>({
-  pattern: ['gulp-*', 'gulp.*'],
-  config: 'package.json',
-  scope: ['dependencies', 'devDependencies', 'peerDependencies'],
-  replaceString: /^gulp(-|\.)/,
-  camelize: true,
-  lazy: true,
-  rename: {}
-});
+// interface GulpPlugins extends IGulpPlugins {
+//   eslint: typeof eslint;
+// }
+//
+// const plugins = gulpLoadPlugins<GulpPlugins>({
+//   pattern: ['gulp-*', 'gulp.*'],
+//   config: 'package.json',
+//   scope: ['dependencies', 'devDependencies', 'peerDependencies'],
+//   replaceString: /^gulp(-|\.)/,
+//   camelize: true,
+//   lazy: true,
+//   rename: {}
+// });
 
 interface lintOptions {
   eslint: GulpESLintOptions;
@@ -46,7 +46,7 @@ export function lintTask(src: string, opts: lintOptions = null): NodeJS.ReadWrit
 
   // Run ESLint
   return gulp.src(src)
-    .pipe(plugins.eslint(opts.eslint))
-    .pipe(plugins.eslint.format())
-    .pipe(plugins.eslint.failAfterError());
+    .pipe(eslint(opts.eslint))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 }
