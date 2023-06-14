@@ -56,8 +56,8 @@ export default function lintTask(src: string, opts: lintOptions = null): () => N
 
     // Run ESLint
     return gulp.src(src)
-      .pipe(plugins.eslint(opts.eslint))
-      .pipe(plugins.eslint.format())
-      .pipe(plugins.eslint.failAfterError());
+      .pipe(plugins.eslintNew(opts.eslint))
+      .pipe(plugins.eslintNew.format())
+      .pipe(plugins.eslintNew.failAfterError());
   }
 }

@@ -1,6 +1,6 @@
-import eslint from "gulp-eslint-new";
+import eslintNew from "gulp-eslint-new";
 interface GulpPlugins extends IGulpPlugins {
-    eslint: typeof eslint;
+    eslintNew: typeof eslintNew;
 }
 export declare const plugins: GulpPlugins;
 export {};
