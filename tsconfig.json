@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "esModuleInterop": true,
     "declarationDir": "./dist",
     "types": [
       "mocha"
