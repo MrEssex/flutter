@@ -45,6 +45,19 @@
                     }
                 }
             };
+            //if src contains .ts, then use typescript-eslint-parser
+            if (src.indexOf('.ts') > -1) {
+                defaultOpts = Object.assign({}, defaultOpts, {
+                    eslint: {
+                        baseConfig: {
+                            extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+                            parser: 'typescript-eslint-parser',
+                            plugins: ['@typescript-eslint'],
+                            root: true,
+                        }
+                    }
+                });
+            }
             // Merge default options with user options
             opts = Object.assign({}, defaultOpts, opts);
             // Run ESLint

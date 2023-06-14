@@ -23,7 +23,7 @@ interface lintOptions {
 export function lintTask(src: string, opts: lintOptions = null): () => NodeJS.ReadWriteStream {
   return function () {
     // Default options
-    const defaultOpts: lintOptions = {
+    let defaultOpts: lintOptions = {
       eslint: {
         baseConfig: {
           extends: ['eslint:recommended'],
@@ -40,6 +40,20 @@ export function lintTask(src: string, opts: lintOptions = null): () => NodeJS.Re
           }
         }
       }
+    }
+
+    //if src contains .ts, then use typescript-eslint-parser
+    if (src.indexOf('.ts') > -1) {
+      defaultOpts = Object.assign({}, defaultOpts, {
+        eslint: {
+          baseConfig: {
+            extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+            parser: 'typescript-eslint-parser',
+            plugins: ['@typescript-eslint'],
+            root: true,
+          }
+        }
+      });
     }
 
     // Merge default options with user options
