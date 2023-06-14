@@ -1,6 +1,6 @@
 import * as gulp from 'gulp';
 import eslint, {GulpESLintOptions} from "gulp-eslint-new";
-import gulpLoadPlugins = require("gulp-load-plugins");
+import * as gulpLoadPlugins from 'gulp-load-plugins';
 
 interface GulpPlugins extends IGulpPlugins {
   eslint: typeof eslint;

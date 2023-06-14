@@ -13,10 +13,6 @@ export default {
       file: pkg.module,
       format: 'es',
     },
-    {
-      file: pkg.browser,
-      format: 'cjs',
-    },
   ],
   external: [
     ...Object.keys(pkg.dependencies || {}),

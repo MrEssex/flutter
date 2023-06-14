@@ -1,4 +1,5 @@
 import * as gulp from 'gulp';
+import * as gulpLoadPlugins from 'gulp-load-plugins';
 
 var plugins = gulpLoadPlugins({
     pattern: ['gulp-*', 'gulp.*'],

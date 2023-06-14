@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('gulp')) :
-    typeof define === 'function' && define.amd ? define(['exports', 'gulp'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.index = global.index || {}, global.index.cjs = global.index.cjs || {}, global.index.cjs.js = {}), global.gulp));
-})(this, (function (exports, gulp) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('gulp'), require('gulp-load-plugins')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'gulp', 'gulp-load-plugins'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.index = global.index || {}, global.index.cjs = global.index.cjs || {}, global.index.cjs.js = {}), global.gulp, global.gulpLoadPlugins));
+})(this, (function (exports, gulp, gulpLoadPlugins) { 'use strict';
 
     function _interopNamespaceDefault(e) {
         var n = Object.create(null);
@@ -22,8 +22,9 @@
     }
 
     var gulp__namespace = /*#__PURE__*/_interopNamespaceDefault(gulp);
+    var gulpLoadPlugins__namespace = /*#__PURE__*/_interopNamespaceDefault(gulpLoadPlugins);
 
-    var plugins = gulpLoadPlugins({
+    var plugins = gulpLoadPlugins__namespace({
         pattern: ['gulp-*', 'gulp.*'],
         config: 'package.json',
         scope: ['dependencies', 'devDependencies', 'peerDependencies'],
